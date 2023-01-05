@@ -34,26 +34,32 @@ void Users::insert() {
 void Users::select(const std::string& path, const std::string& name) {
     std::vector<std::string> vecline;
     std::string line{};
-    std::ifstream myfile (path);
-    int i = 0;
-    if(!myfile.is_open()){
+    std::ifstream myfile(path);
+    vecline.push_back("");
+    if (!myfile.is_open()) {
         std::cout << "Data base is unavailable, please check entered data" << std::endl;
         std::cout << "Program terminating.\n";
-    } else {
-        while (getline(myfile, line))
+    }
+    else {
+        int i = 0;
+        int count_of_lines = get_count_of_lines(path);
+        while (count_of_lines)
         {
-            std::getline(myfile, line);
-            vecline[i] = line;
+            vecline[i] = getline_from_a_file(path, count_of_lines);
+            //std::cin.ignore();
+            //std::getline(myfile, line);
+            //vecline[i] = line;
+            i++;
+            --count_of_lines;
         }
         myfile.close();
     }
 
     int size = get_count_of_lines(path);
 
-    for(int i = 0,j = 0; i < size; i++, j++) {
-        std::vector<std::string> searched_data;
-        searched_data = split(vecline[i], "|");
-        if(searched_data[1] == name) {
+    for (int i = 0, j = 1; i < size; i++, j++) {
+        std::vector<std::string> searched_data = split_to_words(vecline[i]);
+        if (searched_data[1] == name) {
             std::cout << j << "." << vecline[i] << std::endl;
         }
     }

@@ -5,8 +5,9 @@
 class Project {
      public:
         Project();
-        ~Project() {std:cout << "Project data saved in data-base";}
-
+        Project(const std::string& newprojectName, const std::string& projectManagerName, const std::string& projectManagerSName, int newProjectId);
+        ~Project();
+        
         void setProjectName(const std::string& projectName);    
         std::string getProjectName();
 
@@ -16,8 +17,8 @@ class Project {
         void setprojectManagerSName(const std::string& projectManagerSName);
         std::string getprojectManagerSName();
 
-        static setProjectId(int projectId);
-        static int getProjectId();
+        void setProjectId(int projectId);
+        int getProjectId();
 
         // void insert(const std::string& path);
         // void select(const std::string& path);
@@ -26,5 +27,5 @@ class Project {
         std::string projectName;
         std::string projectManagerName;
         std::string projectManagerSName; 
-        static int projectId;
+        int projectId;
 };

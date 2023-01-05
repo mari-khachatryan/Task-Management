@@ -40,6 +40,29 @@ std::vector<std::string> split(std::string str,std::string str2)
         return vk;
 }
 
+std::vector<std::string> split_to_words(std::string input) {
+	std::vector<std::string> result;
+	unsigned int i{};
+	unsigned int j{};
+	result.push_back("");
+	while (i < input.size()) {
+		while (input[i] != ' ' && input[i] != '|' && input[i] != ',' && input[i] != '\0') {
+			result[j].push_back(input[i]);
+			++i;
+			if (input[i] == ' ' || input[i] == ',') {
+				++j;
+				result.push_back("");
+				break;
+			}
+		}
+		if (input[i] == '\0') {
+			return result;
+		}
+		++i;
+	}
+	return result;
+}
+
 void start() 
 {
         std::cout << "Hello, welcome to Sona and Mariam's task management system!" << std::endl;
@@ -96,11 +119,11 @@ void start()
                         std::cout << "Please write according to what you want to search user." <<std:: endl;
                         std::cout << "For example, 'I want to select with name and with age'" << std::endl;
                         std::string str;
-                        std::cin >> str;
+                        std::cin.ignore();
+                        getline(std::cin, str);
                         std::string newStr;
                         std::vector<std::string> vec = split(str, " ");
                         for(int i = 0; i < vec.size(); ++i){
-                                std::cout << vec[i];
                                 newStr = newStr + vec[i];
                         }
                         std::cout << newStr;
