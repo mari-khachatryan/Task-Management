@@ -2,9 +2,12 @@
 #include <string>
 #include "tasks.h"
 
-int Task::taskId = 0;
 
-Task::Task() {}
+Task::Task(const std::string& newTitle, const std::string& newAuther, const std::string newDescription, int newTaskId) 
+:title{newTitle}
+,auther{newAuther}
+,description{newDescription}
+,taskId{newTaskId}{};
 
 Task::~Task()
 {
@@ -33,6 +36,9 @@ void Task::setDescription(int newDescription) {
 
 std::string Task::getDescription() {
 	return description;
+}
+void Task::setTaskId() {
+	taskId = newTaskId;
 }
 
 int Task::gettaskId() {

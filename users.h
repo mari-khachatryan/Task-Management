@@ -19,7 +19,8 @@ public:
 
     //void insert(const std::string& path);
     void insert();
-    void select(const std::string& path, const std::string& name);
+    void selectWithName(const std::string& path, const std::string& name);
+    void selectWithSername(const std::string& path, const std::string& name);
 private:
     std::string name;
     std::string surName;

@@ -4,6 +4,7 @@
 class Task {
     public:
         Task();
+        Task::Task(const std::string& newTitle, const std::string& newAuther, const std::string newDescription, int newTaskId);
         ~Task(); 
 
         void setTitle(const std::string& title);  
@@ -13,10 +14,10 @@ class Task {
         std::string getAuther();
 
         void setDescription(int description);
-        int getDescription();
+        std::string getDescription();
 
-        //static settastId(int tastId);
-        static int gettastId();
+        void setTaskId(int taskId);
+        int getTaskId();
 
         // void insert(const std::string& path);
         // void select(const std::string& path);
@@ -24,5 +25,5 @@ class Task {
         std::string title;
         std::string auther;
         std::string description;
-        ststic int tastId;
-    }
+        int taskId;
+    };

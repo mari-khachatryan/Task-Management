@@ -36,7 +36,7 @@ std::string Project::getprojectManagerSName() {
 	return projectManagerSName;
 }
 
-void setProjectId (int newProjectId) {
+void Project::setProjectId(int newProjectId) {
 	projectId = newProjectId;
 }
 

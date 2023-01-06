@@ -127,11 +127,24 @@ void start()
                                 newStr = newStr + vec[i];
                         }
                         std::cout << newStr;
-                        if(newStr.find("name") != std::string::npos) { 
+                        if(newStr.find("name") != std::string::npos && newStr.find("sername") == std::string::npos &&
+                        newStr.find("age") == std::string::npos) { 
                                 std::string name;
                                 std::cout << "please enter user name which you want select users" << std::endl;
                                 std::cin >> name;
-                                user.select("users.txt", name);
+                                user.selectWithName("users.txt", name);
+                        } else {
+                                std::cout << "Please enter corect according! " << std::endl;
+                        }
+
+                        if(newStr.find("name") == std::string::npos && newStr.find("sername") != std::string::npos &&
+                        newStr.find("age") == std::string::npos) { 
+                                std::string sername;
+                                std::cout << "please enter user sername which you want select users" << std::endl;
+                                std::cin >> sername;
+                                user.selectWithSername("users.txt", sername);
+                        } else {
+                                std::cout << "Please enter corect according! " << std::endl;
                         }
                 }
                 else if (number_of_instruction == 3) {

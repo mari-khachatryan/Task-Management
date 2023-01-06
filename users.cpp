@@ -65,7 +65,7 @@ void Users::insert() {
     }
 }*/
 
-void Users::select(const std::string& path, const std::string& name) {
+void Users::selectWithName(const std::string& path, const std::string& name) {
     std::vector<std::string> vecline;
     std::string line{};
     std::ifstream myfile(path);
@@ -94,12 +94,43 @@ void Users::select(const std::string& path, const std::string& name) {
     for (int i = 0, j = 0; i < size; i++, j++) {
         std::vector<std::string> searched_data = split_to_words(vecline[i]);
         if (searched_data[1] == name) {
-            std::cout << j << "." << vecline[i] << std::endl;
+            std::cout << j << "." << searched_data[1] << " " << searched_data[2] 
+            << " "  << searched_data[3] << std::endl;
         }
     }
 }
 
+void Users::selectWithSername(const std::string& path, const std::string& sername) {
+    std::vector<std::string> vecline;
+    std::string line{};
+    std::ifstream myfile(path);
+    vecline.push_back("");
+    if (!myfile.is_open()) {
+        std::cout << "Data base is unavailable, please check entered data" << std::endl;
+        std::cout << "Program terminating.\n";
+    }
+    else {
+        int i = 0;
+        int count_of_lines = get_count_of_lines(path);
+        while (count_of_lines)
+        {
+            vecline[i] = getline_from_a_file(path, count_of_lines);
+            i++;
+            --count_of_lines;
+        }
+        myfile.close();
+    }
 
+    int size = get_count_of_lines(path);
+
+    for (int i = 0, j = 0; i < size; i++, j++) {
+        std::vector<std::string> searched_data = split_to_words(vecline[i]);
+        if (searched_data[2] == sername) {
+             std::cout << j << "." << searched_data[1] << " " << searched_data[2] 
+            << " "  << searched_data[3] << std::endl;
+        }
+    }
+}
 
 
 
