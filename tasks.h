@@ -3,8 +3,8 @@
 
 class Task {
     public:
-        Task();
-        Task::Task(const std::string& newTitle, const std::string& newAuther, const std::string newDescription, int newTaskId);
+        Task() {};
+        Task(const std::string& newTitle, const std::string& newAuther, const std::string& newDescription, int newTaskId);
         ~Task(); 
 
         void setTitle(const std::string& title);  

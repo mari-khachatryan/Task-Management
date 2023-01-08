@@ -3,11 +3,11 @@
 #include "tasks.h"
 
 
-Task::Task(const std::string& newTitle, const std::string& newAuther, const std::string newDescription, int newTaskId) 
+Task::Task(const std::string& newTitle, const std::string& newAuther, const std::string& newDescription, int newTaskId) 
 :title{newTitle}
 ,auther{newAuther}
 ,description{newDescription}
-,taskId{newTaskId}{};
+,taskId{newTaskId} {};
 
 Task::~Task()
 {
@@ -37,11 +37,11 @@ void Task::setDescription(int newDescription) {
 std::string Task::getDescription() {
 	return description;
 }
-void Task::setTaskId() {
+void Task::setTaskId(int newTaskId) {
 	taskId = newTaskId;
 }
 
-int Task::gettaskId() {
+int Task::getTaskId() {
 	return taskId;
 }
 
