@@ -100,6 +100,17 @@ void start()
                         std::cout << "sureName = ";
                         std::string entered_sureName;
                         std::cin >> entered_sureName;
+                        std::cout << "gmail = ";
+                        std::string gmail;
+                        while (true)
+                        {
+                                std::cin >> gmail;
+                                if(!check_gmail("users.txt", gmail)) {
+                                        std::cout << "A user with such gmail already exists, the gmail must be unique!" << std::endl;
+                                } else {
+                                        break;
+                                }
+                        }
                         std::cout << "age = ";
                         int entered_age;
                         std::cin >> entered_age;
@@ -108,10 +119,11 @@ void start()
                                 std::string tmp = getline_from_a_file("users.txt", lines_number);
                                 std::vector<std::string> a = split(tmp, "|");
                                 user.setId(stoi(a[0]) + 1);
-            }
+                        }
 
             user.setName(entered_name);
             user.setSurName(entered_sureName);
+            user.setGmail(gmail);
             user.setAge(entered_age);
             user.insert();
                 }
@@ -148,10 +160,18 @@ void start()
                         }
                 }
                 else if (number_of_instruction == 3) {
-
+                        std::cout << "Please enter the gmail, according to which user data should be found and changed." << std::endl;
+                        std::string gmail;
+                        std::cin.ignore();
+                        getline(std::cin, gmail);
+                        user.update(gmail, "users.txt");
                 }
                 else{
-
+                        std::cout << "Please enter the gmail, according to which user data should be deleted." << std::endl;
+                        std::string gmail;
+                        std::cin.ignore();
+                        getline(std::cin, gmail);
+                        //user.delete();
                 }
         }
 }
@@ -189,9 +209,84 @@ std::string getline_from_a_file(std::string filename, int line_number) {
     return "";
 }
 
+// std::vector<std::string> get_all_lines(std::string path) {
+//         std::vector<std::string> vecline;
+//         std::string line{};
+//         std::ifstream myfile(path);
+//         vecline.push_back("");
+//         if (myfile.is_open()) {
+//         int i = 0;
+//         int count_of_lines = get_count_of_lines(path);
+//         while (count_of_lines)
+//         {
+//                 vecline[i] = getline_from_a_file(path, count_of_lines);
+//                 i++;
+//                 --count_of_lines;
+//         }
+//         myfile.close();
+//         }
+//         return vecline;
+// }
+
 bool file_is_empty(std::string filename) {
-    std::ifstream fin(filename);
-    return fin.peek() == std::ifstream::traits_type::eof();
+        std::ifstream fin(filename);
+        return fin.peek() == std::ifstream::traits_type::eof();
+}
+
+int return_user_id(std::string path, std::string gmail) {
+        std::vector<std::string> vecline;
+        std::string line{};
+        std::ifstream myfile(path);
+        vecline.push_back("");
+        if (myfile.is_open()) {
+        int i = 0;
+        int count_of_lines = get_count_of_lines(path);
+        while (count_of_lines)
+        {
+                vecline[i] = getline_from_a_file(path, count_of_lines);
+                i++;
+                --count_of_lines;
+        }
+        myfile.close();
+        }
+        int size = get_count_of_lines(path);
+
+        for (int i = 0; i < size; i++) {
+                std::vector<std::string> searched_data = split_to_words(vecline[i]);
+                if (searched_data[4] == gmail) {
+                        return stoi(searched_data[0]);
+                }
+        }
+ return 0;
+        
+}
+
+bool check_gmail(std::string path, std::string gmail) {
+        std::vector<std::string> vecline;
+        std::string line{};
+        std::ifstream myfile(path);
+        vecline.push_back("");
+        if (myfile.is_open()) {
+        int i = 0;
+        int count_of_lines = get_count_of_lines(path);
+        while (count_of_lines)
+        {
+                vecline[i] = getline_from_a_file(path, count_of_lines);
+                i++;
+                --count_of_lines;
+        }
+        myfile.close();
+        }
+        int size = get_count_of_lines(path);
+
+        for (int i = 0; i < size; i++) {
+                std::vector<std::string> searched_data = split_to_words(vecline[i]);
+                if (searched_data[4] == gmail || gmail.find("@gmail.com") == std::string::npos || gmail.length() < 11) {
+                        return false;
+                }
+        }
+
+        return true;
 }
 
 
