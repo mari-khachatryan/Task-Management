@@ -1,8 +1,6 @@
-0|Lilit|Khachatryan|25
-1|Soan|Khachatryan|20
-2|Mariam|Khachatryan|25
-3|Gohar|Tamazyan|30
-4|Tigran|Babayan|4
-5|Svetlanna|Grigoryan|50
-6|Poghos|Petrosyan|25
-7|Tigran|Babayan|5|mariam.xach@gmail.com
+0|Mariam|Khachatryan|25|markhach@gmail.com
+1|Tigran|Babayan|4|m.xach@gmail.com
+2|Poghos|Petrosyan|25|pogh@gmail.com
+3|Tigran|Babayan|5|mariam.xach@gmail.com
+4|Ani|Khachatryan|0|ani@gmail.com
+5|Hakob|Khachatryan|20|hak@gmail.com
