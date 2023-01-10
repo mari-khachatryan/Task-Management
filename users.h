@@ -20,10 +20,10 @@ public:
     void setId(int userId) { id = userId; }
     int getId() { return id; }
 
-    //void insert(const std::string& path);
     void insert();
     void selectWithName(const std::string& path, const std::string& name);
     void selectWithSername(const std::string& path, const std::string& name);
+    void selectWithAge(const std::string& path, int age);
     void update(const std::string& gmail, const std::string& path);
     void deleted(const std::string& gmail, const std::string& path);
 private:

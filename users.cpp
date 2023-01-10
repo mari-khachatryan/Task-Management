@@ -62,8 +62,6 @@ void Users::selectWithName(const std::string& path, const std::string& name) {
     }
 }
 
-
-
 void Users::selectWithSername(const std::string& path, const std::string& sername) {
     std::vector<std::string> vecline;
     std::ifstream myfile(path);
@@ -94,6 +92,40 @@ void Users::selectWithSername(const std::string& path, const std::string& sernam
         }
     }
 }
+
+void Users::selectWithAge(const std::string& path, int age) {
+    std::vector<std::string> vecline;
+    std::ifstream myfile(path);
+    if (!myfile.is_open()) {
+        std::cout << "Data base is unavailable, please check entered data" << std::endl;
+        std::cout << "Program terminating.\n";
+    }
+    else {
+        int i = 1;
+        int count_of_lines = get_count_of_lines(path);
+        while (count_of_lines)
+        {
+            vecline.push_back(getline_from_a_file(path, i));
+            i++;
+            --count_of_lines;
+        }
+        myfile.close();
+    }
+
+    int size = get_count_of_lines(path);
+
+    for (int i = 0, j = 1; i < size; i++) {
+        std::vector<std::string> searched_data = split_to_words(vecline[i]);
+        std::string strAge = std::to_string(age);
+        if (searched_data[3] == strAge) {
+             std::cout << j << "." << searched_data[1] << " " << searched_data[2] 
+            << " "  << searched_data[3] << " " << searched_data[4] << std::endl;
+            j++;
+        }
+    }
+}
+
+
 
 void Users::update(const std::string& gmail, const std::string& path) {
     std::vector<std::string> vecline;
@@ -195,8 +227,6 @@ void Users::deleted(const std::string& gmail, const std::string& path) {
                     user.setAge(stoi(strAge));
                     user.insert();
                 }
-        } else {
-
         }
     }
 
