@@ -175,12 +175,12 @@ void work_with_users() {
                                 int age;
                                 std::cout << "please enter user age which you want select users" << std::endl;
                                 std::cin >> age;
-                                //user.selectWithAge("users.txt", age);
+                                user.selectWithAge("users.txt", age);
                         }  else if (newStr.find("firstname") != std::string::npos && newStr.find("lastname") != std::string::npos &&
                                 newStr.find("age") == std::string::npos) {
                                 std::string name;
                                 std::string sername;
-                                std::cout << "please enter user name  and surname which you want select users" << std::endl;
+                                std::cout << "please enter user firstname and lastname which you want select users" << std::endl;
                                 std::cout << "name = ";
                                 std::cin >> name;
                                 std::cout << "surname = ";
@@ -190,7 +190,7 @@ void work_with_users() {
                                 newStr.find("age") != std::string::npos) {
                                 std::string name;
                                 int age;
-                                std::cout << "please enter user name and age which you want select users" << std::endl;
+                                std::cout << "please enter user firstname and age which you want select users" << std::endl;
                                 std::cout << "name = ";
                                 std::cin >> name;
                                 std::cout << "age = ";
@@ -200,7 +200,7 @@ void work_with_users() {
                                 newStr.find("age") != std::string::npos) {
                                 std::string surname;
                                 int age;
-                                std::cout << "please enter surname and age which you want select users" << std::endl;
+                                std::cout << "please enter lastname and age which you want select users" << std::endl;
                                 std::cout << "surname = ";
                                 std::cin >> surname;
                                 std::cout << "age = ";
@@ -356,22 +356,20 @@ std::string getline_from_a_file(std::string filename, int line_number) {
 }
 
 // std::vector<std::string> get_all_lines(std::string path) {
-//         std::vector<std::string> vecline;
-//         std::string line{};
+//         std::vector<std::string>* vecline;
 //         std::ifstream myfile(path);
-//         vecline.push_back("");
 //         if (myfile.is_open()) {
 //         int i = 0;
 //         int count_of_lines = get_count_of_lines(path);
 //         while (count_of_lines)
 //         {
-//                 vecline.push_back(getline_from_a_file(path, i));
+//                 vecline->push_back(getline_from_a_file(path, i));
 //                 i++;
 //                 --count_of_lines;
 //         }
 //         myfile.close();
 //         }
-//         return vecline;
+//         return *vecline;
 // }
 
 bool file_is_empty(std::string filename) {
