@@ -85,11 +85,12 @@ void Users::selectWithSername(const std::string& path, const std::string& sernam
 
     int size = get_count_of_lines(path);
 
-    for (int i = 0, j = 1; i < size; i++,j++) {
+    for (int i = 0, j = 1; i < size; i++) {
         std::vector<std::string> searched_data = split_to_words(vecline[i]);
         if (searched_data[2] == sername) {
              std::cout << j << "." << searched_data[1] << " " << searched_data[2] 
             << " "  << searched_data[3] << " " << searched_data[4] << std::endl;
+            j++;
         }
     }
 }
@@ -195,7 +196,7 @@ void Users::deleted(const std::string& gmail, const std::string& path) {
                     user.insert();
                 }
         } else {
-            
+
         }
     }
 

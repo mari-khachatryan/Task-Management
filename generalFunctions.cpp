@@ -148,7 +148,7 @@ void work_with_users() {
                 }
                 else if (number_of_instruction == 2) {
                         std::cout << "Please write according to what you want to search user." <<std:: endl;
-                        std::cout << "For example, 'I want to select with name and with age'" << std::endl;
+                        std::cout << "For example, 'I want to select with firstname, lastname and with age'" << std::endl;
                         std::string str;
                         std::cin.ignore();
                         getline(std::cin, str);
@@ -158,25 +158,25 @@ void work_with_users() {
                                 newStr = newStr + vec[i];
                         }
                         std::cout << newStr;
-                        if(newStr.find("name") != std::string::npos && newStr.find("surname") == std::string::npos &&
+                        if(newStr.find("firstname") != std::string::npos && newStr.find("lasttname") == std::string::npos &&
                         newStr.find("age") == std::string::npos) { 
                                 std::string name;
                                 std::cout << "please enter user name which you want select users" << std::endl;
                                 std::cin >> name;
                                 user.selectWithName("users.txt", name);
-                        }  else if (newStr.find("name") == std::string::npos && newStr.find("sername") != std::string::npos &&
+                        }  else if (newStr.find("firstname") == std::string::npos && newStr.find("lastname") != std::string::npos &&
                                 newStr.find("age") == std::string::npos) { 
                                 std::string sername;
                                 std::cout << "please enter user sername which you want select users" << std::endl;
                                 std::cin >> sername;
                                 user.selectWithSername("users.txt", sername);
-                        } else if (newStr.find("name") == std::string::npos && newStr.find("sername") == std::string::npos &&
+                        } else if (newStr.find("firstname") == std::string::npos && newStr.find("lastname") == std::string::npos &&
                                 newStr.find("age") != std::string::npos) {
                                 int age;
                                 std::cout << "please enter user age which you want select users" << std::endl;
                                 std::cin >> age;
                                 //user.selectWithAge("users.txt", age);
-                        }  else if (newStr.find("name") != std::string::npos && newStr.find("sername") != std::string::npos &&
+                        }  else if (newStr.find("firstname") != std::string::npos && newStr.find("lastname") != std::string::npos &&
                                 newStr.find("age") == std::string::npos) {
                                 std::string name;
                                 std::string sername;
@@ -186,7 +186,7 @@ void work_with_users() {
                                 std::cout << "surname = ";
                                 std::cin >> sername;
                                 //user.selectWithNameSurname("users.txt", name, sername);
-                        }else if (newStr.find("name") != std::string::npos && newStr.find("sername") == std::string::npos &&
+                        }else if (newStr.find("firstname") != std::string::npos && newStr.find("lastname") == std::string::npos &&
                                 newStr.find("age") != std::string::npos) {
                                 std::string name;
                                 int age;
@@ -196,7 +196,7 @@ void work_with_users() {
                                 std::cout << "age = ";
                                 std::cin >> age;
                                 //user.selectWithNameAge("users.txt", name, age);
-                        }else if (newStr.find("name") == std::string::npos && newStr.find("sername") != std::string::npos &&
+                        }else if (newStr.find("firstname") == std::string::npos && newStr.find("lastname") != std::string::npos &&
                                 newStr.find("age") != std::string::npos) {
                                 std::string surname;
                                 int age;
