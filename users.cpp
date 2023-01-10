@@ -32,24 +32,19 @@ void Users::insert() {
     }
 }
 
-/*void Users::select(const std::string& path, const std::string& name) {
+void Users::selectWithName(const std::string& path, const std::string& name) {
     std::vector<std::string> vecline;
-    std::string line{};
     std::ifstream myfile(path);
-    vecline.push_back("");
     if (!myfile.is_open()) {
         std::cout << "Data base is unavailable, please check entered data" << std::endl;
         std::cout << "Program terminating.\n";
     }
     else {
-        int i = 0;
+        int i = 1;
         int count_of_lines = get_count_of_lines(path);
         while (count_of_lines)
         {
-            vecline[i] = getline_from_a_file(path, count_of_lines);
-            //std::cin.ignore();
-            //std::getline(myfile, line);
-            //vecline[i] = line;
+            vecline.push_back(getline_from_a_file(path, i));
             i++;
             --count_of_lines;
         }
@@ -59,60 +54,29 @@ void Users::insert() {
     int size = get_count_of_lines(path);
 
     for (int i = 0, j = 1; i < size; i++, j++) {
-        std::vector<std::string> searched_data = split_to_words(vecline[i]);
+        std::vector<std::string> searched_data = split(vecline[i], "|");
         if (searched_data[1] == name) {
-            std::cout << j << "." << vecline[i] << std::endl;
-        }
-    }
-}*/
-
-void Users::selectWithName(const std::string& path, const std::string& name) {
-    std::vector<std::string> vecline;
-    std::string line{};
-    std::ifstream myfile(path);
-    vecline.push_back("");
-    if (!myfile.is_open()) {
-        std::cout << "Data base is unavailable, please check entered data" << std::endl;
-        std::cout << "Program terminating.\n";
-    }
-    else {
-        int i = 0;
-        int count_of_lines = get_count_of_lines(path);
-        while (count_of_lines)
-        {
-            vecline[i] = getline_from_a_file(path, count_of_lines);
-            i++;
-            --count_of_lines;
-        }
-        myfile.close();
-    }
-
-    int size = get_count_of_lines(path);
-
-    for (int i = 0, j = 0; i < size; i++, j++) {
-        std::vector<std::string> searched_data = split_to_words(vecline[i]);
-        if (searched_data[1] == name) {
-            std::cout << j << "." << searched_data[1] << " " << searched_data[2] 
-            << " "  << searched_data[3] << searched_data[5] << std::endl;
+             std::cout << j << "." << searched_data[1] << " " << searched_data[2] 
+             << " "  << searched_data[3] << " " << searched_data[4] << std::endl;
         }
     }
 }
 
+
+
 void Users::selectWithSername(const std::string& path, const std::string& sername) {
     std::vector<std::string> vecline;
-    std::string line{};
     std::ifstream myfile(path);
-    vecline.push_back("");
     if (!myfile.is_open()) {
         std::cout << "Data base is unavailable, please check entered data" << std::endl;
         std::cout << "Program terminating.\n";
     }
     else {
-        int i = 0;
+        int i = 1;
         int count_of_lines = get_count_of_lines(path);
         while (count_of_lines)
         {
-            vecline[i] = getline_from_a_file(path, count_of_lines);
+            vecline.push_back(getline_from_a_file(path, i));
             i++;
             --count_of_lines;
         }
@@ -125,26 +89,24 @@ void Users::selectWithSername(const std::string& path, const std::string& sernam
         std::vector<std::string> searched_data = split_to_words(vecline[i]);
         if (searched_data[2] == sername) {
              std::cout << j << "." << searched_data[1] << " " << searched_data[2] 
-            << " "  << searched_data[3] << searched_data[5] << std::endl;
+            << " "  << searched_data[3] << " " << searched_data[4] << std::endl;
         }
     }
 }
 
 void Users::update(const std::string& gmail, const std::string& path) {
     std::vector<std::string> vecline;
-    std::string line{};
     std::ifstream myfile(path);
-    vecline.push_back("");
     if (!myfile.is_open()) {
         std::cout << "Data base is unavailable, please check entered data" << std::endl;
         std::cout << "Program terminating.\n";
     }
     else {
-        int i = 0;
+        int i = 1;
         int count_of_lines = get_count_of_lines(path);
         while (count_of_lines)
         {
-            vecline[i] = getline_from_a_file(path, count_of_lines);
+            vecline.push_back(getline_from_a_file(path, i));
             i++;
             --count_of_lines;
         }
@@ -166,13 +128,13 @@ void Users::update(const std::string& gmail, const std::string& path) {
         } else {
             std::string updateUser;
             std::string strId = std::to_string(return_user_id(path, gmail));
-            std::cout << "Please enter new name = " << std::endl;
+            std::cout << "Please enter new name = ";
             std::string name;
             std::cin >> name;
-            std::cout << "Please enter new sername = " << std::endl;
+            std::cout << "Please enter new sername = ";
             std::string sername;
             std::cin >> sername;
-            std::cout << "Please enter new age = " << std::endl;
+            std::cout << "Please enter new age = ";
             int age;
             std::cin >> age;
             std::string strAge = std::to_string(age);
@@ -187,19 +149,17 @@ void Users::update(const std::string& gmail, const std::string& path) {
 
 void Users::deleted(const std::string& gmail, const std::string& path) {
     std::vector<std::string> vecline;
-    std::string line{};
     std::ifstream myfile(path);
-    vecline.push_back("");
     if (!myfile.is_open()) {
         std::cout << "Data base is unavailable, please check entered data" << std::endl;
         std::cout << "Program terminating.\n";
     }
     else {
-        int i = 0;
+        int i = 1;
         int count_of_lines = get_count_of_lines(path);
         while (count_of_lines)
         {
-            vecline[i] = getline_from_a_file(path, count_of_lines);
+            vecline.push_back(getline_from_a_file(path, i));
             i++;
             --count_of_lines;
         }
@@ -217,7 +177,7 @@ void Users::deleted(const std::string& gmail, const std::string& path) {
                     throw  ("fatal error!");
                 } else {
                     std::string name = searched_data[1];
-                    std::string sername = searched_data[2];
+                    std::string serName = searched_data[2];
                     std::string strAge = searched_data[3];
                     std::string mail = searched_data[4];
 
@@ -229,11 +189,13 @@ void Users::deleted(const std::string& gmail, const std::string& path) {
                     }
 
                     user.setName(name);
-                    user.setSurName(surName);
-                    user.setGmail(gmail);
+                    user.setSurName(serName);
+                    user.setGmail(mail);
                     user.setAge(stoi(strAge));
                     user.insert();
                 }
+        } else {
+            
         }
     }
 

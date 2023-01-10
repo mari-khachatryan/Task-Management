@@ -3,7 +3,7 @@ class Users {
 public:
     Users() : age(0), id(0) { }
     Users(const std::string& userName, const std::string& userSurname,const std::string& userGmail, const int& userAge, const int& userId);
-     ~Users() { std::cout << "User add in data base"; }
+     ~Users() { }
 
     void setName(const std::string& userName) { name = userName; }
     std::string getName() { return name; }
